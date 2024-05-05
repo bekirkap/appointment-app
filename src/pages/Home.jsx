@@ -5,10 +5,10 @@ import { Container } from 'react-bootstrap'
 
 const Home = () => {
   return (
-    <Container className=''>
+    <Container className=' text-center '>
     <div>Home</div>
-    <AppiontmentList/>
     <Doctors/>
+    <AppiontmentList/>
     </Container>
   )
 }

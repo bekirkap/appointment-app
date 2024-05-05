@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { doctorData } from '../helpers/data';
 import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -8,8 +7,10 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 
 
-function Example({show, handleClose}) {
+function Example({show, handleClose,doctorName}) {
     const [validated, setValidated] = useState(false);
+    const [patientName, setPatientName]= useState("")
+    const [date, setDate]= useState("")
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
@@ -19,50 +20,32 @@ function Example({show, handleClose}) {
       }
   
       setValidated(true);};
+      console.log(patientName,date,doctorName);
     
 
   return (
     <>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className=' text-center'>
         <Modal.Header closeButton>
 
-          <Modal.Title>{doctorData.name}</Modal.Title>
+          <Modal.Title>Appoinment for {doctorName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Row className="mb-3">
+      <Row className="mb-3  ">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
           <Form.Control
             required
             type="text"
             placeholder="First name"
-
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Last name"
-            
+            onChange={e=> setPatientName(e.target.value)}
+            value={patientName}
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
    
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="Last name"
-            
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
    
       </Row>
       <Row>
@@ -70,8 +53,11 @@ function Example({show, handleClose}) {
           <Form.Label>Date</Form.Label>
           <Form.Control
             required
-            type="text"
+            type="datetime-local"
             placeholder="Last name"
+            onChange={(e)=> setDate(e.target.value)}
+            value={date}
+            
             
           />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -87,7 +73,7 @@ function Example({show, handleClose}) {
           feedbackType="invalid"
         />
       </Form.Group>
-      <Button type="submit">Submit form</Button>
+      <Button type="submit">Appointment</Button>
     </Form>
         </Modal.Body>
      
