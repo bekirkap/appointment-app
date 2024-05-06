@@ -7,19 +7,23 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 
 
-function Example({show, handleClose,doctorName}) {
+function Example({show, handleClose,doctorName,newApps}) {
     const [validated, setValidated] = useState(false);
     const [patientName, setPatientName]= useState("")
     const [date, setDate]= useState("")
 
     const handleSubmit = (event) => {
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-  
-      setValidated(true);};
+      event.preventDefault();
+     console.log({patientName,doctorName,date});
+      newApps({
+        id: 1,
+        patient: patientName,
+        day: date,
+        consulted: false,
+        doctor: doctorName,
+      })
+      setValidated(true);
+    };
       console.log(patientName,date,doctorName);
     
 

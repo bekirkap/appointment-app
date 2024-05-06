@@ -4,10 +4,14 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import { useState } from 'react';
 import Modal from "./Modal"
 
-const Doctors = () => {
+const Doctors = ({apps,setApps}) => {
   const [show, setShow] = useState(false);
   const[doctorName,setDoctorName]=useState("")
-    
+  const addAppointment = (newApps) =>{
+    setApps(...apps,newApps)
+  }  
+
+
   return (
     <Container className=' text-center g-5 '>
         <h2>Doctors</h2>
@@ -22,7 +26,7 @@ const Doctors = () => {
                 </Col>)
             }
         </Row>
-        <Modal show={show} handleClose={()=> setShow(false)} doctorName={doctorName}/>
+        <Modal show={show} handleClose={()=> setShow(false)} doctorName={doctorName} newApps={newApps}/>
     </Container>
   )
     
