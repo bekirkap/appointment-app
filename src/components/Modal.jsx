@@ -7,7 +7,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 
 
-function Example({show, handleClose,doctorName,newApps}) {
+function Example({show, handleClose,doctorName,addAppointment}) {
     const [validated, setValidated] = useState(false);
     const [patientName, setPatientName]= useState("")
     const [date, setDate]= useState("")
@@ -15,8 +15,8 @@ function Example({show, handleClose,doctorName,newApps}) {
     const handleSubmit = (event) => {
       event.preventDefault();
      console.log({patientName,doctorName,date});
-      newApps({
-        id: 1,
+      addAppointment({
+        id: crypto.randomUUID(),
         patient: patientName,
         day: date,
         consulted: false,
@@ -24,7 +24,6 @@ function Example({show, handleClose,doctorName,newApps}) {
       })
       setValidated(true);
     };
-      console.log(patientName,date,doctorName);
     
 
   return (
@@ -39,7 +38,7 @@ function Example({show, handleClose,doctorName,newApps}) {
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3  ">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>First name</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             required
             type="text"

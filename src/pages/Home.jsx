@@ -11,7 +11,7 @@ const Home = () => {
     <Container className=' text-center '>
     <div>Kaplan Hospital</div>
     <Doctors setApps={setAppoinments} apps={appointments}/>
-    <AppiontmentList/>
+    <AppiontmentList apps={appointments} setApps={setAppoinments}/>
     </Container>
   )
 }

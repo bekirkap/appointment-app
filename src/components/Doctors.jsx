@@ -26,7 +26,7 @@ const Doctors = ({apps,setApps}) => {
                 </Col>)
             }
         </Row>
-        <Modal show={show} handleClose={()=> setShow(false)} doctorName={doctorName} newApps={newApps}/>
+        <Modal show={show} handleClose={()=> setShow(false)} doctorName={doctorName} addAppointment={addAppointment}/>
     </Container>
   )
     
