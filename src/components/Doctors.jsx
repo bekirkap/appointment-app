@@ -7,15 +7,16 @@ import Modal from "./Modal"
 const Doctors = ({apps,setApps}) => {
   const [show, setShow] = useState(false);
   const[doctorName,setDoctorName]=useState("")
-  const addAppointment = (newApps) =>{
-    setApps(...apps,newApps)
+  const addAppointment = (newAppo) =>{
+    setApps([...apps, newAppo])
   }  
 
 
   return (
     <Container className=' text-center g-5 '>
         <h2>Doctors</h2>
-        <Row>
+        <Row     
+       >
             {
                 doctorData.map(doctor => <Col key={doctor.id} className=' m-4 '>
                 <Image src={doctor.img} width={"200px"} height={"200px"} onClick={()=>{setShow(true);

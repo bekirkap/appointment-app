@@ -23,6 +23,9 @@ function Example({show, handleClose,doctorName,addAppointment}) {
         doctor: doctorName,
       })
       setValidated(true);
+      setPatientName("")
+      setDate("")
+      handleClose()
     };
     
 

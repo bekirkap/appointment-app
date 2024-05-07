@@ -4,14 +4,21 @@ import { TiDelete, TiTick } from 'react-icons/ti'
 
 const AppiontmentList = ({apps,setApps}) => {
 
-
-
+const handleDelete = (id) =>{
+  setApps(apps?.filter(appo=> appo.id !== id))
+}
+const handleToggle = (id) =>{
+  setApps(apps?.map(appo=> appo.id === id ? {...appo,consulted: !appo.consulted} : appo))
+}
 
   return (
     <div>
       <h1>appointment list</h1>
       {
-        apps?.length ? apps.map(({id,patient,day,consulted,doctor})=><Row key={id}>
+        apps?.length ? apps.map(({id,patient,day,consulted,doctor})=><Row key={id}  className={
+          "appointments justify-content-between align-items-center mx-auto" +
+          (consulted ? " consulted" : "")
+        }>
 
             <Col>
             <h4>{patient}</h4>
@@ -24,8 +31,8 @@ const AppiontmentList = ({apps,setApps}) => {
           
             </Col>
             <Col>
-            <h4><TiDelete/></h4>
-            <h4><TiTick/></h4>
+            <h4><TiDelete type='button' onClick={()=> handleDelete(id)}/></h4>
+            <h4><TiTick type='button' onClick={()=>handleToggle(id)}/></h4>
           
             </Col>
 
